@@ -18,7 +18,7 @@ BeforeAll{
         Set-PSRepository PSGallery -InstallationPolicy Trusted
         # detect local or github
         $moduleManifestFile.RequiredModules|Foreach-Object{
-            Install-Module $_ -Force
+            Install-Module $_ -Force -AllowClobbe
             Update-Module $_
         }
     }    
