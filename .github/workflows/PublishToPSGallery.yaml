@@ -1,0 +1,22 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CD Powershell Gallery Publish
+on: [push, pull_request]
+
+jobs:
+    build:
+      name: Run Script
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - name: Script
+          run: ./PSActions\PSPesterTests.ps1 -NugetKey ${{ secrets.PS_GALLERY }}
+          shell: pwsh
+        - uses: dorny/test-reporter@v1
+          with:
+            name: Pwsh JUnit Tests
+            path: '.TestReports/*.xml'
+            reporter: java-junit
+        - name: Script
+          run: ./PSActions/PSGalleryPublish.ps1 -NugetKey ${{ secrets.PS_GALLERY }}
+          shell: pwsh
