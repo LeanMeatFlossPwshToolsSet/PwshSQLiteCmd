@@ -10,7 +10,7 @@ $gitRepoName=($gitUrl.replace(".git","") -split "/")[-1]
 Write-Host "Current git repo name is $gitRepoName"
 $moduleBaseName=$gitRepoName.Replace("-","")
 Write-Host "Current module base name $moduleBaseName"
-$gitHostName=($gitUrl.replace(".git","") -split "/")[-2]
+$gitHostName=($gitUrl.replace(".git","").replace("git@github.com:","") -split "/")[-2]
 
 
 Set-Location "$PSScriptRoot/../"
