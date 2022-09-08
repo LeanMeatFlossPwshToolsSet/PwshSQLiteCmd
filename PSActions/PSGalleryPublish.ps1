@@ -32,7 +32,7 @@ Get-ChildItem -Path "$($env:GITHUB_WORKSPACE)/$moduleBaseName" -Directory |ForEa
         $PublishOrderHash[$subModuleName]=0
     }     
     $moduleManifestFile=Import-PowerShellDataFile  "$($env:GITHUB_WORKSPACE)/$moduleBaseName/$subModuleName/$subModuleName.psd1"
-    $moduleManifestFile.NestedModules|ForEach-Object{
+    $moduleManifestFile.RequiredModules|ForEach-Object{
         if(Test-Path "$($env:GITHUB_WORKSPACE)/$moduleBaseName/$_"){
             if($PublishOrderHash.ContainsKey($_)){
                 $PublishOrderHash[$_]=$PublishOrderHash[$_]+1
