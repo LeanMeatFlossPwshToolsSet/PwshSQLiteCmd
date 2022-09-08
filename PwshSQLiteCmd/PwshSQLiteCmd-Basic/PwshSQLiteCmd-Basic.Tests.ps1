@@ -4,7 +4,7 @@ BeforeAll{
     # add psmodules for all items in workspaces
     $moduleManifestFile=Import-PowerShellDataFile  "$PSScriptRoot/$currentTestModuleName.psd1"
     # install dependency modules
-    if($env:GITHUB_JOB){
+    if(-not $env:GITHUB_JOB){
         (Resolve-Path "$PSScriptRoot/../../../")|Get-ChildItem -Directory|Foreach-Object{
             $ParentNamePath=$_.Name
             $_|Get-ChildItem -Directory|Where-Object{
