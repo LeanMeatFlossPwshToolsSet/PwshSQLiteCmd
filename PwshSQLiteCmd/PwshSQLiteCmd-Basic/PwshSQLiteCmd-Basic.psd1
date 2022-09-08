@@ -71,10 +71,10 @@ Description = 'PwshSQLiteCmd'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @()
+RequiredModules = @("RelativeWorkspaceManager-Advance")
 
 # Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = @()
+RequiredAssemblies = @("Assemblies/System.Data.SQLite.dll","Assemblies\System.Data.SQLite.dll")
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
